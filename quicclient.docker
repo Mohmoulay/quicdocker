@@ -1,0 +1,14 @@
+FROM monroe/base
+MAINTAINER mohamed.moulay@imdea.org
+
+RUN apt-get update 
+
+#--------------------------------------
+WORKDIR /quicclient
+COPY . /quicclient
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+#--------------------------------------------------------------------
+
+EXPOSE 8081
+
+ENTRYPOINT "/quicclient/start.sh" && /bin/bash
